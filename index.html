@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My CV</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('wwms.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .overlay {
+            background: rgba(0,0,0,0.7);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        nav {
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            display: none;
+            padding: 80px 20px 20px 20px; /* Padding top to avoid nav */
+        }
+        .active {
+            display: block;
+        }
+        h2 {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #28a745;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .overview {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .overview h3 {
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <nav>
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('personal')">Personal Information</a>
+            <a onclick="showSection('education')">Education</a>
+            <a onclick="showSection('work')">Work Experience</a>
+            <a onclick="showSection('skills')">Skills</a>
+            <a onclick="showSection('projects')">Projects</a>
+            <a onclick="showSection('contact')">Contact</a>
+            <a onclick="showSection('overview')">Overview</a>
+        </nav>
+
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <h1>GUNDO MASHAU</h1>
+            
+A CV (CURRICULUM VITAE) IS A DOCUMENT THAT OUTLINES YOUR EDUCATIONAL BACKGROUND, WORK EXPERIENCE, SKILLS, AND ACHIEVEMENTS. IT’S AN ESSENTIAL TOOL FOR JOB SEEKERS, HELPING EMPLOYERS GET A QUICK OVERVIEW OF YOUR QUALIFICATIONS AND SUITABILITY FOR A ROLE.
+
+USING OUR WEBSITE TO CREATE YOUR CV ENSURES IT'S PROFESSIONAL, UP-TO-DATE, AND TAILORED TO CURRENT INDUSTRY STANDARDS. WITH USER-FRIENDLY TEMPLATES AND CUSTOMIZATION OPTIONS, WE MAKE THE PROCESS QUICK AND EASY, GIVING YOU A POLISHED CV THAT STANDS OUT IN TODAY’S COMPETITIVE JOB MARKET.
+
+
+
+
+
+
+
+        </div>
+
+        <!-- Personal Information Section -->
+        <div id="personal" class="section">
+            <h2>Personal Information</h2>
+            <form>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" oninput="saveData('name', this.value)" placeholder="Your Name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" oninput="saveData('email', this.value)" placeholder="your.email@example.com">
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" oninput="saveData('phone', this.value)" placeholder="+1234567890">
+
+                <label for="bio">Short Bio:</label>
+                <textarea id="bio" rows="4" oninput="saveData('bio', this.value)" placeholder="A brief description about yourself..."></textarea>
+            </form>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="section">
+            <h2>Education</h2>
+            <form id="educationForm">
+                <label for="school">School/University:</label>
+                <input type="text" id="school" oninput="saveData('school', this.value)" placeholder="Your School or University">
+
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" oninput="saveData('degree', this.value)" placeholder="Your Degree">
+
+                <label for="year">Year of Graduation:</label>
+                <input type="text" id="year" oninput="saveData('year', this.value)" placeholder="e.g., 2024">
+            </form>
+        </div>
+
+        <!-- Work Experience Section -->
+        <div id="work" class="section">
+            <h2>Work Experience</h2>
+            <form id="workForm">
+                <label for="company">Company:</label>
+                <input type="text" id="company" oninput="saveData('company', this.value)" placeholder="Company Name">
+
+                <label for="position">Position:</label>
+                <input type="text" id="position" oninput="saveData('position', this.value)" placeholder="Your Position">
+
+                <label for="duration">Duration:</label>
+                <input type="text" id="duration" oninput="saveData('duration', this.value)" placeholder="e.g., Jan 2020 - Present">
+
+                <label for="workDescription">Description:</label>
+                <textarea id="workDescription" rows="4" oninput="saveData('workDescription', this.value)" placeholder="Describe your role and responsibilities..."></textarea>
+            </form>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="section">
+            <h2>Skills</h2>
+            <form id="skillsForm">
+                <label for="skillsInput">List your skills (comma separated):</label>
+                <input type="text" id="skillsInput" oninput="saveData('skills', this.value)" placeholder="e.g., JavaScript, HTML, CSS">
+            </form>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="section">
+            <h2>Projects</h2>
+            <form id="projectsForm">
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" oninput="saveData('projectName', this.value)" placeholder="Project Name">
+
+                <label for="projectDescription">Description:</label>
+                <textarea id="projectDescription" rows="4" oninput="saveData('projectDescription', this.value)" placeholder="Describe your project..."></textarea>
+            </form>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div id="contact" class="section">
+            <h2>Contact Form</h2>
+            <form id="contactForm">
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" oninput="saveData('contactName', this.value)" placeholder="Your Name">
+
+                <label for="contactEmail">Your Email:</label>
+                <input type="email" id="contactEmail" oninput="saveData('contactEmail', this.value)" placeholder="your.email@example.com">
+
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" oninput="saveData('message', this.value)" placeholder="Your message..."></textarea>
+
+                <button type="button" onclick="submitContact()">Submit</button>
+            </form>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="section">
+            <h2>Overview</h2>
+            <div class="overview" id="overviewContent">
+                <!-- Overview content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show a specific section
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            if(sectionId === 'overview') {
+                populateOverview();
+            }
+        }
+
+        // Function to save data to localStorage
+        function saveData(key, value) {
+            localStorage.setItem(key, value);
+        }
+
+        // Function to load data from localStorage
+        function loadData() {
+            const keys = ['name', 'email', 'phone', 'bio', 'school', 'degree', 'year',
+                          'company', 'position', 'duration', 'workDescription',
+                          'skills', 'projectName', 'projectDescription',
+                          'contactName', 'contactEmail', 'message'];
+            keys.forEach(key => {
+                const element = document.getElementById(key);
+                if(element) {
+                    element.value = localStorage.getItem(key) || '';
+                }
+            });
+        }
+
+        // Function to populate the overview section
+        function populateOverview() {
+            const overview = document.getElementById('overviewContent');
+            overview.innerHTML = `
+                <h3>Personal Information</h3>
+                <p><strong>Name:</strong> ${localStorage.getItem('name') || 'N/A'}</p>
+                <p><strong>Email:</strong> ${localStorage.getItem('email') || 'N/A'}</p>
+                <p><strong>Phone:</strong> ${localStorage.getItem('phone') || 'N/A'}</p>
+                <p><strong>Bio:</strong> ${localStorage.getItem('bio') || 'N/A'}</p>
+
+                <h3>Education</h3>
+                <p><strong>School/University:</strong> ${localStorage.getItem('school') || 'N/A'}</p>
+                <p><strong>Degree:</strong> ${localStorage.getItem('degree') || 'N/A'}</p>
+                <p><strong>Year of Graduation:</strong> ${localStorage.getItem('year') || 'N/A'}</p>
+
+                <h3>Work Experience</h3>
+                <p><strong>Company:</strong> ${localStorage.getItem('company') || 'N/A'}</p>
+                <p><strong>Position:</strong> ${localStorage.getItem('position') || 'N/A'}</p>
+                <p><strong>Duration:</strong> ${localStorage.getItem('duration') || 'N/A'}</p>
+                <p><strong>Description:</strong> ${localStorage.getItem('workDescription') || 'N/A'}</p>
+
+                <h3>Skills</h3>
+                <p>${localStorage.getItem('skills') ? localStorage.getItem('skills').split(',').map(skill => `<li>${skill.trim()}</li>`).join('') : 'N/A'}</p>
+
+                <h3>Projects</h3>
+                <p><strong>Project Name:</strong> ${localStorage.getItem('projectName') || 'N/A'}</p>
+                <p><strong>Description:</strong> ${localStorage.getItem('projectDescription') || 'N/A'}</p>
+
+                <h3>Contact Information</h3>
+                <p><strong>Your Name:</strong> ${localStorage.getItem('contactName') || 'N/A'}</p>
+                <p><strong>Your Email:</strong> ${localStorage.getItem('contactEmail') || 'N/A'}</p>
+                <p><strong>Message:</strong> ${localStorage.getItem('message') || 'N/A'}</p>
+            `;
+        }
+
+        // Function to handle contact form submission
+        function submitContact() {
+            const name = localStorage.getItem('contactName') || 'N/A';
+            const email = localStorage.getItem('contactEmail') || 'N/A';
+            const message = localStorage.getItem('message') || 'N/A';
+
+            if(name === 'N/A' || email === 'N/A' || message === 'N/A') {
+                alert('Please fill out all contact form fields before submitting.');
+                return;
+            }
+
+            // For demonstration, we'll just alert the message.
+            // In a real application, you would send this data to a server.
+            alert('Thank you for your message!');
+            
+            // Optionally, clear the contact form
+            document.getElementById('contactForm').reset();
+            localStorage.removeItem('contactName');
+            localStorage.removeItem('contactEmail');
+            localStorage.removeItem('message');
+        }
+
+        // Load data when the page loads
+        window.onload = loadData;
+    </script>
+</body>
+</html>
